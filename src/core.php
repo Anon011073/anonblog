@@ -40,9 +40,13 @@ function parse_post_file(string $filepath): ?array
     $parsedown = new Parsedown();
     $html_content = $parsedown->text($markdown_content);
 
+    // Allow plugins to filter the final post content
+    $html_content = apply_filters('post_content', $html_content);
+
     return [
         'slug' => basename($filepath, '.md'),
         'title' => $metadata['title'] ?? 'Untitled Post',
+        'category' => $metadata['category'] ?? 'Uncategorized',
         'timestamp' => isset($metadata['date']) ? strtotime($metadata['date']) : filemtime($filepath),
         'content' => $html_content, // The rendered HTML content
         'raw_content' => $markdown_content, // The original Markdown for excerpts

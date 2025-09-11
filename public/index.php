@@ -13,6 +13,10 @@ if (file_exists(ROOT_PATH . '/vendor/autoload.php')) {
 // Load configuration
 $config = require_once ROOT_PATH . '/config.php';
 
+// Load and initialize the plugin system
+require_once ROOT_PATH . '/src/plugins.php';
+load_plugins();
+
 // Load core functions
 require_once ROOT_PATH . '/src/core.php';
 

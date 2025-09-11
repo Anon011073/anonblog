@@ -35,11 +35,12 @@ if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
 // --- 2. Get and Validate Form Data ---
 $title = trim($_POST['title'] ?? '');
 $content = trim($_POST['content'] ?? '');
+$category = trim($_POST['category'] ?? 'General');
 
-if (empty($title) || empty($content)) {
+if (empty($title) || empty($content) || empty($category)) {
     // For simplicity, we die with an error. A more robust app might redirect
     // back to the form with an error message and repopulated fields.
-    exit('Error: Title and content fields cannot be empty.');
+    exit('Error: Title, content, and category fields cannot be empty.');
 }
 
 // --- 3. Generate Slug and Format Content ---
@@ -49,10 +50,30 @@ $date = date('Y-m-d');
 // Assemble the content for the .md file with front-matter
 $file_content = "Title: {$title}\n";
 $file_content .= "Date: {$date}\n";
+$file_content .= "Category: {$category}\n";
 $file_content .= "---\n";
 $file_content .= $content;
 
-// --- 4. Save the New Post File ---
+// --- 4. Update Categories List (if necessary) ---
+$categories_file = __DIR__ . '/../data/categories.json';
+$categories_list = json_decode(file_get_contents($categories_file), true);
+
+// Check if the category exists (case-insensitive)
+$found = false;
+foreach ($categories_list as $existing_category) {
+    if (strcasecmp($existing_category, $category) === 0) {
+        $found = true;
+        break;
+    }
+}
+
+if (!$found) {
+    $categories_list[] = $category;
+    sort($categories_list, SORT_NATURAL | SORT_FLAG_CASE); // Sort naturally
+    file_put_contents($categories_file, json_encode($categories_list, JSON_PRETTY_PRINT));
+}
+
+// --- 5. Save the New Post File ---
 $config = require_once __DIR__ . '/../config.php';
 $filepath = $config['posts_dir'] . '/' . $slug . '.md';
 

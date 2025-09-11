@@ -25,4 +25,10 @@ return [
     // A simple, hardcoded password for the admin area.
     // For a real-world application, you should use a more secure method!
     'admin_password' => 'password',
+
+    // --- Plugin System ---
+    // Add the filenames of the plugins you want to enable from the 'plugins' directory.
+    'enabled_plugins' => [
+        'syntax-highlighter.php',
+    ],
 ];

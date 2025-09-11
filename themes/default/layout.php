@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title><?php echo htmlspecialchars($config['blog_title'] ?? 'My Blog'); ?></title>
     <link rel="stylesheet" href="css/style.css">
+    <?php do_hook('head_tags'); ?>
 </head>
 <body>
     <div class="container">
@@ -19,5 +20,6 @@
             <p>&copy; <?php echo date('Y'); ?> <?php echo htmlspecialchars($config['blog_title'] ?? 'My Blog'); ?>. All rights reserved.</p>
         </footer>
     </div>
+    <?php do_hook('footer_scripts'); ?>
 </body>
 </html>

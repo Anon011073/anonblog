@@ -3,6 +3,7 @@
         <h1><?php echo htmlspecialchars($post['title']); ?></h1>
         <p class="post-meta">
             Published on <?php echo date('F j, Y', $post['timestamp']); ?>
+            in <span class="category"><?php echo htmlspecialchars($post['category']); ?></span>
         </p>
     </header>
 

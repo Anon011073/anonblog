@@ -14,6 +14,7 @@
                 </h2>
                 <p class="post-meta">
                     Published on <?php echo date('F j, Y', $post['timestamp']); ?>
+                    in <span class="category"><?php echo htmlspecialchars($post['category']); ?></span>
                 </p>
                 <p class="excerpt">
                     <?php echo htmlspecialchars(substr($post['raw_content'], 0, 200)); ?>...

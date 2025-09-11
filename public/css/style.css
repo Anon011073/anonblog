@@ -149,3 +149,12 @@ footer {
     text-align: center;
     padding: 40px 0;
 }
+
+.post-meta .category {
+    font-weight: bold;
+    color: #555;
+    background-color: #f0f0f0;
+    padding: 2px 6px;
+    border-radius: 3px;
+    font-size: 0.85em;
+}
