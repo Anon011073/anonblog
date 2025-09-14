@@ -5,6 +5,8 @@
 require_once 'auth.php';
 require_login();
 
+$config = require_once __DIR__ . '/../config.php';
+
 /**
  * Creates a URL-friendly slug from a string.
  * @param string $title The string to convert.
@@ -74,7 +76,6 @@ if (!$found) {
 }
 
 // --- 5. Save the New Post File ---
-$config = require_once __DIR__ . '/../config.php';
 $filepath = $config['posts_dir'] . '/' . $slug . '.md';
 
 // Attempt to write the new file

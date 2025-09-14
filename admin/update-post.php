@@ -6,7 +6,7 @@ require_once 'auth.php';
 require_login();
 
 // Load necessary files
-require_once __DIR__ . '/../config.php';
+$config = require_once __DIR__ . '/../config.php';
 require_once __DIR__ . '/../src/plugins.php';
 require_once __DIR__ . '/../src/core.php';
 
@@ -60,7 +60,6 @@ if (!$found) {
 
 
 // --- 5. Overwrite the Original Post File ---
-$config = require_once __DIR__ . '/../config.php';
 $filepath = $config['posts_dir'] . '/' . basename($original_slug) . '.md'; // Use basename for security
 
 if (file_exists($filepath)) {

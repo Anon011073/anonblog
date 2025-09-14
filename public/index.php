@@ -10,7 +10,8 @@ if (file_exists(ROOT_PATH . '/vendor/autoload.php')) {
     require_once ROOT_PATH . '/vendor/autoload.php';
 }
 
-// Load configuration
+// Load configuration into the global scope so core functions can access it
+global $config;
 $config = require_once ROOT_PATH . '/config.php';
 
 // Load and initialize the plugin system

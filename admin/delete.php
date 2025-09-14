@@ -1,7 +1,7 @@
 <?php
 // admin/delete.php
 include 'partials/header.php';
-require_once __DIR__ . '/../config.php';
+$config = require_once __DIR__ . '/../config.php';
 require_once __DIR__ . '/../src/plugins.php';
 require_once __DIR__ . '/../src/core.php';
 
@@ -12,7 +12,6 @@ if (!$slug) {
     exit;
 }
 
-$config = require_once __DIR__ . '/../config.php';
 $filepath = $config['posts_dir'] . '/' . basename($slug) . '.md'; // Use basename for security
 
 // --- Handle POST request for actual deletion ---
