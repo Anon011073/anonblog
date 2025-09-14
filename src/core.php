@@ -106,7 +106,11 @@ function get_all_posts(): array
 function render(string $template_name, array $data = []): void
 {
     global $config;
-    $theme_path = ROOT_PATH . '/themes/' . $config['active_theme'];
+    $theme_dir_name = $config['active_theme'] ?? 'default';
+    $theme_path = ROOT_PATH . '/themes/' . $theme_dir_name;
+
+    // Provide the public URL path to the theme directory for assets (CSS, JS, etc.)
+    $data['theme_url'] = 'themes/' . $theme_dir_name;
 
     // Make data from the controller available as variables in the template
     extract($data);

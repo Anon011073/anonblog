@@ -1,0 +1,124 @@
+/* Dark Theme by Jules */
+
+/* General Body & Typography */
+body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    line-height: 1.7;
+    color: #cdd3d9; /* Light gray text */
+    background-color: #1e2127; /* Dark background */
+    margin: 0;
+    padding: 20px;
+}
+
+.container {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+/* Header */
+header {
+    padding-bottom: 20px;
+    margin-bottom: 30px;
+    border-bottom: 1px solid #3a3f4b; /* Darker border */
+}
+
+header h1 a {
+    text-decoration: none;
+    color: #ffffff; /* White title */
+    font-weight: bold;
+}
+
+header p {
+    margin: 5px 0 0;
+    color: #8892a0; /* Lighter gray for description */
+}
+
+/* Main Content & Links */
+main {
+    min-height: 60vh;
+}
+
+a {
+    color: #58a6ff; /* A pleasant blue for links */
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+/* Post Lists (Home Page) */
+.post-excerpt {
+    margin-bottom: 40px;
+    padding-bottom: 20px;
+    border-bottom: 1px solid #3a3f4b;
+}
+
+.post-excerpt:last-child {
+    border-bottom: none;
+}
+
+.post-excerpt h2 a {
+    color: #e2e8f0; /* Off-white for post titles */
+}
+
+.post-meta {
+    color: #8892a0;
+    font-size: 0.9em;
+}
+
+.post-meta .category {
+    font-weight: bold;
+    color: #cdd3d9;
+    background-color: #3a3f4b;
+    padding: 2px 6px;
+    border-radius: 3px;
+    font-size: 0.85em;
+}
+
+/* Full Post (Single Post View) */
+.full-post h1 {
+    color: #ffffff;
+    font-size: 2.5em;
+}
+
+.post-content blockquote {
+    border-left: 3px solid #58a6ff;
+    padding-left: 1em;
+    margin-left: 0;
+    font-style: italic;
+    color: #a0aab8;
+}
+
+.post-content code {
+    background-color: #2c313a;
+    padding: 2px 5px;
+    border-radius: 3px;
+    font-family: "SFMono-Regular", Consolas, "Liberation Mono", Menlo, Courier, monospace;
+}
+
+.post-content pre {
+    background-color: #2c313a;
+    padding: 1em;
+    border-radius: 3px;
+    overflow-x: auto;
+}
+
+/* Footer */
+footer {
+    margin-top: 40px;
+    padding-top: 20px;
+    border-top: 1px solid #3a3f4b;
+    color: #8892a0;
+    font-size: 0.9em;
+    text-align: center;
+}
+
+/* Utility */
+.not-found {
+    text-align: center;
+    padding: 40px 0;
+}
+.not-found h1 {
+    color: #ffffff;
+}
