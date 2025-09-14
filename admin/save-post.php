@@ -5,7 +5,24 @@
 require_once 'auth.php';
 require_login();
 
-$config = require_once __DIR__ . '/../config.php';
+// The $config global is now loaded via header.php, but this page doesn't include the header.
+// It's a standalone script that handles a form submission.
+// Therefore, it needs to load the config itself.
+// The previous fix was correct for this file. Let's re-verify.
+// No, the header.php should be included in all admin pages.
+// save-post.php and update-post.php are not pages, they are handlers.
+// My plan to centralize everything in header.php was flawed for scripts that don't produce HTML.
+
+// Let's re-read the plan.
+// "I will remove the individual require_once statements for core files from posts.php, edit.php, delete.php, save-post.php, and update-post.php, as they will now be handled by the shared header."
+// This is incorrect for save-post.php and update-post.php, as they don't and shouldn't include a file that outputs a full HTML header.
+
+// I need to adjust my plan. `save-post.php` and `update-post.php` must load their dependencies themselves.
+// The bug I fixed in them earlier (loading config once at the top) was the correct pattern for them.
+// I need to check if I have broken them with my recent changes.
+
+// Let's read `admin/save-post.php` again.
+read_file('admin/save-post.php')
 
 /**
  * Creates a URL-friendly slug from a string.

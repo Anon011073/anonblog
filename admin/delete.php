@@ -1,11 +1,9 @@
 <?php
 // admin/delete.php
 include 'partials/header.php';
-$config = require_once __DIR__ . '/../config.php';
-require_once __DIR__ . '/../src/plugins.php';
-require_once __DIR__ . '/../src/core.php';
 
 // Check for slug in either GET or POST request
+// All dependencies are now loaded by header.php
 $slug = $_GET['slug'] ?? $_POST['slug'] ?? null;
 if (!$slug) {
     header('Location: posts.php');
