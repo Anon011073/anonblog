@@ -3,7 +3,7 @@
 include 'partials/header.php';
 // Fetch all posts to display in the table
 // All dependencies are now loaded by header.php
-$posts = get_all_posts();
+$posts = get_all_posts($config);
 ?>
 
 <div class="page-header">

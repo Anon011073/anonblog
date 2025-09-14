@@ -31,7 +31,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 }
 
 // --- Display GET request confirmation page ---
-$post = get_post($slug);
+$post = get_post($config, $slug);
 // If post doesn't exist (e.g., invalid slug), redirect
 if (!$post) {
     header('Location: posts.php?error=Post not found.');

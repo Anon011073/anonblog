@@ -12,7 +12,7 @@ if (!$slug) {
 }
 
 // Fetch the specific post data using the slug
-$post = get_post($slug);
+$post = get_post($config, $slug);
 if (!$post) {
     // Redirect if post is not found
     header('Location: posts.php?error=Post not found.');

@@ -29,7 +29,7 @@ if (empty($original_slug) || empty($title) || empty($content) || empty($category
 
 // --- 2. Re-fetch original post to preserve original date ---
 // This is a better approach than updating the date on every edit.
-$original_post = get_post($original_slug);
+$original_post = get_post($config, $original_slug);
 $date = $original_post ? date('Y-m-d', $original_post['timestamp']) : date('Y-m-d');
 
 

@@ -28,16 +28,16 @@ $post_slug = $_GET['post'] ?? null;
 // Route the request
 if ($post_slug) {
     // Display a single post
-    $post = get_post($post_slug);
+    $post = get_post($config, $post_slug);
     if ($post) {
-        render('post', ['post' => $post, 'config' => $config]);
+        render($config, 'post', ['post' => $post]);
     } else {
         // Simple 404 handling
         http_response_code(404);
-        render('404', ['config' => $config]);
+        render($config, '404', []);
     }
 } else {
     // Display the home page (list of all posts)
-    $posts = get_all_posts();
-    render('home', ['posts' => $posts, 'config' => $config]);
+    $posts = get_all_posts($config);
+    render($config, 'home', ['posts' => $posts]);
 }
