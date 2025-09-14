@@ -16,7 +16,7 @@ $config = require_once ROOT_PATH . '/config.php';
 
 // Load and initialize the plugin system
 require_once ROOT_PATH . '/src/plugins.php';
-load_plugins();
+load_plugins($config);
 
 // Load core functions
 require_once ROOT_PATH . '/src/core.php';

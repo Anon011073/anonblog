@@ -1,27 +1,10 @@
 <?php
 // admin/partials/header.php
 
-// This header is the single entry point for all admin pages.
-// It handles authentication and loading all core application files.
-
+// This partial now only handles auth and the HTML structure.
+// Core dependencies must be loaded by each page individually.
 require_once __DIR__ . '/../auth.php';
 require_login();
-
-// Define ROOT_PATH if it's not already defined (for scripts in /admin)
-if (!defined('ROOT_PATH')) {
-    define('ROOT_PATH', dirname(__DIR__, 2));
-}
-
-// Load configuration into the global scope for core functions to use.
-global $config;
-$config = require_once ROOT_PATH . '/config.php';
-
-// Load the plugin system and activate enabled plugins.
-require_once ROOT_PATH . '/src/plugins.php';
-load_plugins();
-
-// Load core blog functions.
-require_once ROOT_PATH . '/src/core.php';
 
 /**
  * Helper function to determine if a navigation link should be marked as active.

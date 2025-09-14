@@ -2,8 +2,17 @@
 // admin/edit.php
 include 'partials/header.php';
 
+// Load Core Dependencies
+$config = require_once __DIR__ . '/../config.php';
+if (file_exists(__DIR__ . '/../src/plugins.php')) {
+    require_once __DIR__ . '/../src/plugins.php';
+    load_plugins($config);
+}
+if (file_exists(__DIR__ . '/../src/core.php')) {
+    require_once __DIR__ . '/../src/core.php';
+}
+
 // Get the slug from the URL query string
-// All dependencies are now loaded by header.php
 $slug = $_GET['slug'] ?? null;
 if (!$slug) {
     // Redirect if no slug is provided

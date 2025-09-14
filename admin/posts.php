@@ -1,8 +1,19 @@
 <?php
 // admin/posts.php
+
 include 'partials/header.php';
+
+// Load Core Dependencies
+$config = require_once __DIR__ . '/../config.php';
+if (file_exists(__DIR__ . '/../src/plugins.php')) {
+    require_once __DIR__ . '/../src/plugins.php';
+    load_plugins($config);
+}
+if (file_exists(__DIR__ . '/../src/core.php')) {
+    require_once __DIR__ . '/../src/core.php';
+}
+
 // Fetch all posts to display in the table
-// All dependencies are now loaded by header.php
 $posts = get_all_posts($config);
 ?>
 

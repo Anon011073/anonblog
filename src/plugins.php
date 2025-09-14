@@ -90,10 +90,10 @@ function apply_filters(string $hook_name, $value, ...$args)
 
 /**
  * Loads all enabled plugins from the configuration.
+ * @param array $config The application configuration array.
  */
-function load_plugins()
+function load_plugins(array $config)
 {
-    global $config;
     $enabled_plugins = $config['enabled_plugins'] ?? [];
     foreach ($enabled_plugins as $plugin_file) {
         $plugin_path = ROOT_PATH . '/plugins/' . $plugin_file;

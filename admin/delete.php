@@ -2,8 +2,17 @@
 // admin/delete.php
 include 'partials/header.php';
 
+// Load Core Dependencies
+$config = require_once __DIR__ . '/../config.php';
+if (file_exists(__DIR__ . '/../src/plugins.php')) {
+    require_once __DIR__ . '/../src/plugins.php';
+    load_plugins($config);
+}
+if (file_exists(__DIR__ . '/../src/core.php')) {
+    require_once __DIR__ . '/../src/core.php';
+}
+
 // Check for slug in either GET or POST request
-// All dependencies are now loaded by header.php
 $slug = $_GET['slug'] ?? $_POST['slug'] ?? null;
 if (!$slug) {
     header('Location: posts.php');
@@ -14,7 +23,6 @@ $filepath = $config['posts_dir'] . '/' . basename($slug) . '.md'; // Use basenam
 
 // --- Handle POST request for actual deletion ---
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    // Basic CSRF check could be added here in a real app
     if (file_exists($filepath)) {
         if (unlink($filepath)) {
             // Success
