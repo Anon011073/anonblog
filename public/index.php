@@ -21,6 +21,11 @@ load_plugins($config);
 // Load core functions
 require_once ROOT_PATH . '/src/core.php';
 
+// Start session and load auth functions to check for admin login status on public site
+if (file_exists(ROOT_PATH . '/admin/auth.php')) {
+    require_once ROOT_PATH . '/admin/auth.php';
+}
+
 // Basic routing
 $page = $_GET['page'] ?? 'home';
 $post_slug = $_GET['post'] ?? null;

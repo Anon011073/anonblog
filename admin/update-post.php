@@ -64,8 +64,8 @@ $filepath = $config['posts_dir'] . '/' . basename($original_slug) . '.md'; // Us
 
 if (file_exists($filepath)) {
     if (file_put_contents($filepath, $file_content) !== false) {
-        // Success
-        header('Location: posts.php?success=Post updated successfully!');
+    // Success, redirect back to the edited post's public URL
+    header('Location: ../public/index.php?post=' . urlencode($original_slug));
         exit;
     } else {
         // File system error

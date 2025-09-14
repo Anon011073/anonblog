@@ -70,7 +70,8 @@ if (!$found) {
 $filepath = $config['posts_dir'] . '/' . $slug . '.md';
 
 if (file_put_contents($filepath, $file_content) !== false) {
-    header('Location: posts.php?success=Post created successfully!');
+    // Redirect to the new post's public URL for immediate confirmation.
+    header('Location: ../public/index.php?post=' . urlencode($slug));
     exit;
 } else {
     exit('Error: Could not save the post. Please check permissions.');

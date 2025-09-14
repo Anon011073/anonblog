@@ -25,8 +25,8 @@ $filepath = $config['posts_dir'] . '/' . basename($slug) . '.md'; // Use basenam
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     if (file_exists($filepath)) {
         if (unlink($filepath)) {
-            // Success
-            header('Location: posts.php?success=Post was deleted successfully.');
+    // Success, redirect to the public homepage
+    header('Location: ../public/index.php');
             exit;
         } else {
             // File system error

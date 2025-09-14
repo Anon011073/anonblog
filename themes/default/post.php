@@ -8,6 +8,14 @@
     </header>
 
     <div class="post-content">
+        <?php if (function_exists('is_logged_in') && is_logged_in()): ?>
+            <div class="admin-actions">
+                <strong>Admin:</strong>
+                <a href="admin/edit.php?slug=<?php echo htmlspecialchars($post['slug']); ?>">Edit Post</a>
+                <a href="admin/delete.php?slug=<?php echo htmlspecialchars($post['slug']); ?>" class="delete-link">Delete Post</a>
+            </div>
+        <?php endif; ?>
+
         <?php echo $post['content']; // Content is pre-rendered HTML from Markdown ?>
     </div>
 
