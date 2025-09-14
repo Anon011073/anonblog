@@ -5,6 +5,11 @@
 require_once 'auth.php';
 require_login();
 
+// Load necessary files
+require_once __DIR__ . '/../config.php';
+require_once __DIR__ . '/../src/plugins.php';
+require_once __DIR__ . '/../src/core.php';
+
 // --- 1. Verify Request and Get Data ---
 if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
     // Redirect if not a POST request

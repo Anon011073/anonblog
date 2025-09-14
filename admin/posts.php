@@ -3,6 +3,8 @@
 include 'partials/header.php';
 // We need the config file for the core functions to work
 require_once __DIR__ . '/../config.php';
+// We need the plugin system because core.php depends on it
+require_once __DIR__ . '/../src/plugins.php';
 // We need the core functions to fetch post data
 require_once __DIR__ . '/../src/core.php';
 

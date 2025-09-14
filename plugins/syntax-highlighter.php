@@ -5,7 +5,7 @@
 /**
  * Plugin Name: Syntax Highlighter
  * Description: Adds syntax highlighting to code blocks using Prism.js from a CDN.
- * Version: 1.0
+ * Version: 1.1
  */
 
 // Don't allow direct access to this file.
@@ -15,11 +15,11 @@ if (!defined('ROOT_PATH')) {
 
 /**
  * Adds the Prism.js CSS file to the <head> of the theme.
- * I've chosen the "Okaidia" theme for a nice dark look.
+ * The SRI integrity checks have been removed to prevent issues with CDN file updates.
  */
 function sh_add_prism_css()
 {
-    echo '<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism-okaidia.min.css" integrity="sha512-mIs9kKbaw6JutbgfZpqDDAdocjdaxpWDBOPgBqzCvQZTBKOfUSjs9ibDfcOcuItcNrJ3Muzr1G/wFMDSoiIEcw==" crossorigin="anonymous" referrerpolicy="no-referrer" />';
+    echo '<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism-okaidia.min.css">';
 }
 
 /**
@@ -29,8 +29,8 @@ function sh_add_prism_css()
  */
 function sh_add_prism_js()
 {
-    echo '<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-core.min.js" integrity="sha512-9khQRAUBYEJDCDVP2yw3LRUQvjJ0Pjx0EShmaQjcHa6AXiOv6qHQu9lCAIR8O+/D8FtaCoJ2c0Tf9Xo7hYH01Q==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>';
-    echo '<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/plugins/autoloader/prism-autoloader.min.js" integrity="sha512-zc7MmmNdmfsrB6WoES13efM9IAiPHhGOGPc+NovGGsRDOaDuJqLpfJezPItctskjZyNAn4GUAMU_JobbzR+HDg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>';
+    echo '<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-core.min.js"></script>';
+    echo '<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/plugins/autoloader/prism-autoloader.min.js"></script>';
 }
 
 // Register the functions with the plugin hooks.
