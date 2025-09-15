@@ -38,8 +38,8 @@ function is_active_nav(array $page_names): bool
                 <li class="<?php if (is_active_nav(['dashboard.php'])) echo 'active'; ?>">
                     <a href="dashboard.php">Dashboard</a>
                 </li>
-                <li class="<?php if (is_active_nav(['posts.php', 'create.php', 'edit.php'])) echo 'active'; ?>">
-                    <a href="posts.php">Posts</a>
+                <li class="<?php if (is_active_nav(['create.php'])) echo 'active'; ?>">
+                    <a href="create.php">Add New Post</a>
                 </li>
                 <li class="<?php if (is_active_nav(['themes.php'])) echo 'active'; ?>">
                     <a href="themes.php">Appearance</a>
