@@ -1,46 +1,59 @@
 <?php
 // admin/edit.php
-include 'partials/header.php';
 
-// Load Core Dependencies
-$config = require_once __DIR__ . '/../config.php';
-if (file_exists(__DIR__ . '/../src/plugins.php')) {
-    require_once __DIR__ . '/../src/plugins.php';
+// --- DEPENDENCY LOADING ---
+// This file loads all of its own dependencies to ensure it works.
+require_once __DIR__ . '/auth.php';
+require_login();
+
+// Define ROOT_PATH for core functions
+if (!defined('ROOT_PATH')) {
+    define('ROOT_PATH', dirname(__DIR__));
+}
+
+// Load configuration
+$config = require_once ROOT_PATH . '/config.php';
+
+// Load plugins and core functions if they exist
+if (file_exists(ROOT_PATH . '/src/plugins.php')) {
+    require_once ROOT_PATH . '/src/plugins.php';
     load_plugins($config);
 }
-if (file_exists(__DIR__ . '/../src/core.php')) {
-    require_once __DIR__ . '/../src/core.php';
+if (file_exists(ROOT_PATH . '/src/core.php')) {
+    require_once ROOT_PATH . '/src/core.php';
 }
+// --- END DEPENDENCY LOADING ---
+
 
 // Get the slug from the URL query string
 $slug = $_GET['slug'] ?? null;
 if (!$slug) {
-    // Redirect if no slug is provided
-    header('Location: posts.php');
+    header('Location: dashboard.php'); // Go to dashboard if no slug
     exit;
 }
 
 // Fetch the specific post data using the slug
 $post = get_post($config, $slug);
 if (!$post) {
-    // Redirect if post is not found
-    header('Location: posts.php?error=Post not found.');
+    header('Location: dashboard.php?error=Post not found.'); // Go to dashboard if post not found
     exit;
 }
 
 // Load all available categories for the suggestion list
-$categories_json = file_get_contents(__DIR__ . '/../data/categories.json');
+$categories_json = file_get_contents(ROOT_PATH . '/data/categories.json');
 $categories = json_decode($categories_json, true);
+
+// Include the HTML header
+include __DIR__ . '/partials/header.php';
 ?>
 
 <div class="page-header">
     <h1>Edit Post</h1>
-    <a href="posts.php" class="btn">&larr; Back to All Posts</a>
+    <a href="../public/index.php?post=<?php echo htmlspecialchars($post['slug']); ?>" class="btn" target="_blank">View Post</a>
 </div>
 
 <div class="card">
     <form action="update-post.php" method="post">
-        <!-- Hidden input to identify which post is being updated -->
         <input type="hidden" name="original_slug" value="<?php echo htmlspecialchars($post['slug']); ?>">
 
         <div class="form-group">
@@ -60,7 +73,6 @@ $categories = json_decode($categories_json, true);
 
         <div class="form-group">
             <label for="content">Content (in Markdown)</label>
-            <!-- We use the raw_content to edit the original Markdown source -->
             <textarea id="content" name="content" required><?php echo htmlspecialchars($post['raw_content']); ?></textarea>
         </div>
 
@@ -69,5 +81,6 @@ $categories = json_decode($categories_json, true);
 </div>
 
 <?php
-include 'partials/footer.php';
+// Include the HTML footer
+include __DIR__ . '/partials/footer.php';
 ?>

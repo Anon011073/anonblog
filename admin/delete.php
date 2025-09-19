@@ -1,50 +1,58 @@
 <?php
 // admin/delete.php
-include 'partials/header.php';
 
-// Load Core Dependencies
-$config = require_once __DIR__ . '/../config.php';
-if (file_exists(__DIR__ . '/../src/plugins.php')) {
-    require_once __DIR__ . '/../src/plugins.php';
+// --- DEPENDENCY LOADING ---
+require_once __DIR__ . '/auth.php';
+require_login();
+
+if (!defined('ROOT_PATH')) {
+    define('ROOT_PATH', dirname(__DIR__));
+}
+
+$config = require_once ROOT_PATH . '/config.php';
+
+if (file_exists(ROOT_PATH . '/src/plugins.php')) {
+    require_once ROOT_PATH . '/src/plugins.php';
     load_plugins($config);
 }
-if (file_exists(__DIR__ . '/../src/core.php')) {
-    require_once __DIR__ . '/../src/core.php';
+if (file_exists(ROOT_PATH . '/src/core.php')) {
+    require_once ROOT_PATH . '/src/core.php';
 }
+// --- END DEPENDENCY LOADING ---
+
 
 // Check for slug in either GET or POST request
 $slug = $_GET['slug'] ?? $_POST['slug'] ?? null;
 if (!$slug) {
-    header('Location: posts.php');
+    header('Location: dashboard.php');
     exit;
 }
 
-$filepath = $config['posts_dir'] . '/' . basename($slug) . '.md'; // Use basename for security
+$filepath = $config['posts_dir'] . '/' . basename($slug) . '.md';
 
 // --- Handle POST request for actual deletion ---
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     if (file_exists($filepath)) {
         if (unlink($filepath)) {
-    // Success, redirect to the public homepage
-    header('Location: ../public/index.php');
+            header('Location: ../public/index.php');
             exit;
         } else {
-            // File system error
             $error = "Error: Could not delete the post file. Check permissions.";
         }
     } else {
-        // File not found, maybe already deleted
         $error = "Error: Post file not found. It may have already been deleted.";
     }
 }
 
 // --- Display GET request confirmation page ---
 $post = get_post($config, $slug);
-// If post doesn't exist (e.g., invalid slug), redirect
 if (!$post) {
-    header('Location: posts.php?error=Post not found.');
+    header('Location: dashboard.php?error=Post not found.');
     exit;
 }
+
+// Include the HTML header
+include __DIR__ . '/partials/header.php';
 ?>
 
 <div class="page-header">
@@ -54,20 +62,20 @@ if (!$post) {
 <div class="card">
     <?php if (isset($error)): ?>
         <p style="color: #ef4444; font-weight: bold;"><?php echo $error; ?></p>
-        <a href="posts.php" class="btn">&larr; Back to Posts</a>
+        <a href="dashboard.php" class="btn">&larr; Back to Dashboard</a>
     <?php else: ?>
         <p>Are you sure you want to permanently delete the following post?</p>
         <p><strong>Title:</strong> <?php echo htmlspecialchars($post['title']); ?></p>
-        <p><strong>File:</strong> <?php echo htmlspecialchars($slug . '.md'); ?></p>
 
         <form action="delete.php" method="post" style="margin-top: 20px;">
             <input type="hidden" name="slug" value="<?php echo htmlspecialchars($slug); ?>">
             <button type="submit" class="btn" style="background-color: #ef4444;">Yes, Delete This Post</button>
-            <a href="posts.php" class="btn" style="background-color: #6c757d; margin-left: 10px;">Cancel</a>
+            <a href="../public/index.php?post=<?php echo htmlspecialchars($slug); ?>" class="btn" style="background-color: #6c757d; margin-left: 10px;">Cancel</a>
         </form>
     <?php endif; ?>
 </div>
 
 <?php
-include 'partials/footer.php';
+// Include the HTML footer
+include __DIR__ . '/partials/footer.php';
 ?>

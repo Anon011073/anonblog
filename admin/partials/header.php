@@ -3,6 +3,12 @@
 
 // This partial now only handles auth and the HTML structure.
 // Core dependencies must be loaded by each page individually.
+
+// Define ROOT_PATH for all admin pages that include this header.
+if (!defined('ROOT_PATH')) {
+    define('ROOT_PATH', dirname(__DIR__, 2));
+}
+
 require_once __DIR__ . '/../auth.php';
 require_login();
 
