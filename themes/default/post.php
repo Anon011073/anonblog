@@ -18,8 +18,8 @@
     <?php if (function_exists('is_logged_in') && is_logged_in()): ?>
         <div class="admin-actions" style="margin-top: 30px; padding-top: 20px; border-top: 1px solid #eee;">
             <strong>Admin:</strong>
-            <a href="admin/edit.php?slug=<?php echo htmlspecialchars($post['slug']); ?>">Edit Post</a>
-            <a href="admin/delete.php?slug=<?php echo htmlspecialchars($post['slug']); ?>" class="delete-link">Delete Post</a>
+            <a href="../admin/edit.php?slug=<?php echo htmlspecialchars($post['slug']); ?>">Edit Post</a>
+            <a href="../admin/delete.php?slug=<?php echo htmlspecialchars($post['slug']); ?>" class="delete-link">Delete Post</a>
         </div>
     <?php endif; ?>
 </article>
