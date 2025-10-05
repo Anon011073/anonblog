@@ -39,8 +39,8 @@ $filepath = $config['posts_dir'] . '/' . basename($slug) . '.md';
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     if (file_exists($filepath)) {
         if (unlink($filepath)) {
-            // Deletion successful, redirect to a confirmation page or dashboard
-            header('Location: dashboard.php?success=Post deleted successfully.');
+            // Deletion successful, redirect to the public homepage
+            header('Location: ../public/index.php');
             exit;
         } else {
             // Error: Could not delete

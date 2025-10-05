@@ -7,6 +7,12 @@ require_login();
 
 // Load necessary files
 $config = require_once __DIR__ . '/../config.php';
+
+// Load Composer autoloader
+if (file_exists(__DIR__ . '/../vendor/autoload.php')) {
+    require_once __DIR__ . '/../vendor/autoload.php';
+}
+
 require_once __DIR__ . '/../src/plugins.php';
 require_once __DIR__ . '/../src/core.php';
 
