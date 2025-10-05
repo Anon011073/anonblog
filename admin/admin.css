@@ -71,6 +71,21 @@ body {
     border-left: 3px solid #3b82f6; /* Blue accent for active link */
 }
 
+.admin-nav ul.submenu {
+    list-style: none;
+    padding-left: 20px;
+    margin: 0;
+}
+
+.admin-nav ul.submenu li a {
+    padding-left: 30px;
+    font-size: 0.9em;
+}
+
+.admin-nav ul.submenu li.active a {
+    font-weight: bold;
+}
+
 /* Sidebar Footer */
 .admin-sidebar-footer {
     padding: 20px;

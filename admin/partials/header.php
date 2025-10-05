@@ -47,8 +47,12 @@ function is_active_nav(array $page_names): bool
                 <li class="<?php if (is_active_nav(['create.php'])) echo 'active'; ?>">
                     <a href="create.php">Add New Post</a>
                 </li>
-                <li class="<?php if (is_active_nav(['themes.php'])) echo 'active'; ?>">
+                <li class="<?php if (is_active_nav(['themes.php', 'navigation.php'])) echo 'active'; ?>">
                     <a href="themes.php">Appearance</a>
+                    <ul class="submenu">
+                         <li class="<?php if (is_active_nav(['themes.php'])) echo 'active'; ?>"><a href="themes.php">Themes</a></li>
+                         <li class="<?php if (is_active_nav(['widgets.php'])) echo 'active'; ?>"><a href="widgets.php">Widgets</a></li>
+                    </ul>
                 </li>
                 <li class="<?php if (is_active_nav(['plugins.php'])) echo 'active'; ?>">
                     <a href="plugins.php">Plugins</a>

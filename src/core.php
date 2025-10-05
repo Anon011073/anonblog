@@ -102,7 +102,8 @@ function render(array $config, string $template_name, array $data = []): void
 
     // Pass the config and theme URL to the template
     $data['config'] = $config;
-    $data['theme_url'] = 'themes/' . $theme_dir_name;
+    // Prepend '../' to make the path relative to the /public/ directory
+    $data['theme_url'] = '../themes/' . $theme_dir_name;
 
     extract($data);
 
