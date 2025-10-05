@@ -18,6 +18,9 @@
         </main>
         <footer>
             <p>&copy; <?php echo date('Y'); ?> <?php echo htmlspecialchars($config['blog_title'] ?? 'My Blog'); ?>. All rights reserved.</p>
+            <?php if (function_exists('is_logged_in') && is_logged_in()): ?>
+                <p><a href="admin/dashboard.php">Admin</a></p>
+            <?php endif; ?>
         </footer>
     </div>
     <?php do_hook('footer_scripts'); ?>
