@@ -12,6 +12,7 @@
             display: flex;
             gap: 2rem;
         }
+        header { margin-top:30px; }
         .content {
             flex-grow: 1;
         }

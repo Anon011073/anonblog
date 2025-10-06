@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="light">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="color-scheme" content="light dark"> <!-- Added for Pico -->
+    <meta name="color-scheme" content="light"> <!-- Added for Pico -->
     <title><?php echo htmlspecialchars($config['blog_title'] ?? 'My Blog'); ?></title>
     <!-- Using Pico.css CDN -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@picocss/pico@2/css/pico.min.css">
@@ -13,6 +13,7 @@
             display: flex;
             gap: 2rem; /* Using rem for better scaling */
         }
+        header { margin-top:30px; }
         .content {
             flex-grow: 1;
         }
