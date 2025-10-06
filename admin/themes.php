@@ -18,6 +18,10 @@ if (isset($_GET['activate'])) {
     // Using var_export is a safe way to generate PHP code from an array
     $new_config_content = "<?php\n\n// Blog configuration\nreturn " . var_export($config, true) . ";\n";
     if (file_put_contents($config_file, $new_config_content)) {
+        // Clear the opcache for the config file to ensure the change is reflected immediately
+        if (function_exists('opcache_invalidate')) {
+            opcache_invalidate($config_file, true);
+        }
         // Redirect with a success message
         header('Location: themes.php?success=Theme activated successfully!');
         exit;
