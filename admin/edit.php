@@ -81,6 +81,10 @@ $css_content = file_get_contents(__DIR__ . '/admin.css');
         <div class="form-group">
             <label for="category">Category</label>
             <input type="text" id="category" name="category" list="category-suggestions" value="<?php echo htmlspecialchars($post['category']); ?>">
+        </div>
+        <div class="form-group">
+            <label for="featured_image">Featured Image URL (Optional)</label>
+            <input type="url" id="featured_image" name="featured_image" value="<?php echo htmlspecialchars($post['featured_image'] ?? ''); ?>" placeholder="https://example.com/image.jpg">
             <datalist id="category-suggestions">
                 <?php foreach ($categories as $category): ?>
                     <option value="<?php echo htmlspecialchars($category); ?>"></option>

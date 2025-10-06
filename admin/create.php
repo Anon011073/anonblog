@@ -21,6 +21,10 @@ $categories = json_decode($categories_json, true);
         <div class="form-group">
             <label for="category">Category</label>
             <input type="text" id="category" name="category" list="category-suggestions" required placeholder="e.g., Technology" value="General">
+        </div>
+        <div class="form-group">
+            <label for="featured_image">Featured Image URL (Optional)</label>
+            <input type="url" id="featured_image" name="featured_image" placeholder="https://example.com/image.jpg">
             <datalist id="category-suggestions">
                 <?php foreach ($categories as $category): ?>
                     <option value="<?php echo htmlspecialchars($category); ?>"></option>

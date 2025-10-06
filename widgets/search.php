@@ -11,7 +11,7 @@ return [
 
         echo '<form action="index.php" method="get" class="search-form">';
         echo '  <input type="search" name="s" placeholder="Search..." value="' . $search_query . '" required>';
-        echo '  <button type="submit">Search</button>';
+        // The button has been removed. The form submits on "Enter".
         echo '</form>';
     }
 ];

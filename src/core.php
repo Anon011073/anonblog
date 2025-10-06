@@ -40,6 +40,7 @@ function parse_post_file(string $filepath): ?array
         'slug' => basename($filepath, '.md'),
         'title' => $metadata['title'] ?? 'Untitled Post',
         'category' => $metadata['category'] ?? 'Uncategorized',
+        'featured_image' => $metadata['featured_image'] ?? '',
         'timestamp' => isset($metadata['date']) ? strtotime($metadata['date']) : filemtime($filepath),
         'content' => $html_content,
         'raw_content' => $markdown_content,

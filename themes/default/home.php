@@ -7,6 +7,11 @@
     <div class="post-list">
         <?php foreach ($posts as $post): ?>
             <article class="post-excerpt">
+                <?php if (!empty($post['featured_image'])): ?>
+                    <a href="index.php?post=<?php echo htmlspecialchars($post['slug']); ?>">
+                        <img src="<?php echo htmlspecialchars($post['featured_image']); ?>" alt="<?php echo htmlspecialchars($post['title']); ?>" style="width:100%; height:auto; margin-bottom: 1rem;">
+                    </a>
+                <?php endif; ?>
                 <h2>
                     <a href="index.php?post=<?php echo htmlspecialchars($post['slug']); ?>">
                         <?php echo htmlspecialchars($post['title']); ?>
@@ -23,4 +28,26 @@
             </article>
         <?php endforeach; ?>
     </div>
+
+    <!-- Pagination -->
+    <?php if (isset($pagination) && $pagination['total_pages'] > 1): ?>
+        <nav class="pagination" aria-label="Pagination" style="margin-top: 2rem; text-align: center;">
+            <?php if ($pagination['style'] === 'numbered'): ?>
+                <ul>
+                    <?php for ($i = 1; $i <= $pagination['total_pages']; $i++): ?>
+                        <li>
+                            <?php if ($i == $pagination['current_page']): ?>
+                                <a href="?paged=<?php echo $i; ?>" aria-current="page"><?php echo $i; ?></a>
+                            <?php else: ?>
+                                <a href="?paged=<?php echo $i; ?>"><?php echo $i; ?></a>
+                            <?php endif; ?>
+                        </li>
+                    <?php endfor; ?>
+                </ul>
+            <?php elseif ($pagination['style'] === 'load_more' && $pagination['current_page'] < $pagination['total_pages']): ?>
+                <a href="?paged=<?php echo $pagination['current_page'] + 1; ?>" role="button">Load More</a>
+            <?php endif; ?>
+        </nav>
+    <?php endif; ?>
+
 <?php endif; ?>

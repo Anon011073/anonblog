@@ -68,9 +68,12 @@
             <?php endif; ?>
         </div>
         <footer>
-            <p>&copy; <?php echo date('Y'); ?> <?php echo htmlspecialchars($config['blog_title'] ?? 'My Blog'); ?>. All rights reserved.</p>
+            <p><?php echo $config['footer_text'] ?? '&copy; ' . date('Y') . ' ' . htmlspecialchars($config['blog_title']); ?></p>
             <?php if (function_exists('is_logged_in') && is_logged_in()): ?>
                 <p><a href="../admin/dashboard.php">Admin</a></p>
+            <?php endif; ?>
+            <?php if ($config['show_back_to_top'] ?? false): ?>
+                <p style="margin-top: 1rem;"><a href="#top">Back to Top</a></p>
             <?php endif; ?>
         </footer>
     </div>

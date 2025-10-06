@@ -40,6 +40,7 @@ if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
 $title = trim($_POST['title'] ?? '');
 $content = trim($_POST['content'] ?? '');
 $category = trim($_POST['category'] ?? 'General');
+$featured_image = trim($_POST['featured_image'] ?? ''); // Added
 
 if (empty($title) || empty($content) || empty($category)) {
     exit('Error: Title, content, and category fields cannot be empty.');
@@ -52,6 +53,9 @@ $date = date('Y-m-d');
 $file_content = "Title: {$title}\n";
 $file_content .= "Date: {$date}\n";
 $file_content .= "Category: {$category}\n";
+if (!empty($featured_image)) {
+    $file_content .= "Featured Image: {$featured_image}\n";
+}
 $file_content .= "---\n";
 $file_content .= $content;
 

@@ -1,4 +1,6 @@
 {
-    "sidebar": [],
+    "sidebar": [
+        "search"
+    ],
     "bottom": []
 }

@@ -30,8 +30,8 @@ if (file_exists(ROOT_PATH . '/admin/auth.php')) {
 }
 
 // Basic routing
-$page = $_GET['page'] ?? 'home';
 $post_slug = $_GET['post'] ?? null;
+$page_num = isset($_GET['paged']) ? (int)$_GET['paged'] : 1;
 
 // Route the request
 if ($post_slug) {
@@ -45,7 +45,31 @@ if ($post_slug) {
         render($config, '404', []);
     }
 } else {
-    // Display the home page (list of all posts)
-    $posts = get_all_posts($config);
-    render($config, 'home', ['posts' => $posts]);
+    // Display the home page with pagination
+    $all_posts = get_all_posts($config);
+
+    // Get settings from config, with defaults
+    $posts_per_page = $config['posts_per_page'] ?? 10;
+    $pagination_style = $config['pagination_style'] ?? 'numbered';
+
+    // Calculate total pages and current page
+    $total_posts = count($all_posts);
+    $total_pages = ceil($total_posts / $posts_per_page);
+    $current_page = max(1, min($page_num, $total_pages));
+
+    // Get the subset of posts for the current page
+    $offset = ($current_page - 1) * $posts_per_page;
+    $paginated_posts = array_slice($all_posts, $offset, $posts_per_page);
+
+    // Prepare pagination data for the theme
+    $pagination_data = [
+        'total_pages'  => $total_pages,
+        'current_page' => $current_page,
+        'style'        => $pagination_style,
+    ];
+
+    render($config, 'home', [
+        'posts'      => $paginated_posts,
+        'pagination' => $pagination_data,
+    ]);
 }

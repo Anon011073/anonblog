@@ -27,6 +27,7 @@ $original_slug = $_POST['original_slug'] ?? '';
 $title = trim($_POST['title'] ?? '');
 $content = trim($_POST['content'] ?? '');
 $category = trim($_POST['category'] ?? 'General');
+$featured_image = trim($_POST['featured_image'] ?? ''); // Added
 
 // Basic validation
 if (empty($original_slug) || empty($title) || empty($content) || empty($category)) {
@@ -43,6 +44,9 @@ $date = $original_post ? date('Y-m-d', $original_post['timestamp']) : date('Y-m-
 $file_content = "Title: {$title}\n";
 $file_content .= "Date: {$date}\n"; // Preserve the original date
 $file_content .= "Category: {$category}\n";
+if (!empty($featured_image)) {
+    $file_content .= "Featured Image: {$featured_image}\n";
+}
 $file_content .= "---\n";
 $file_content .= $content;
 
