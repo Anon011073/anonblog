@@ -67,9 +67,9 @@ $themes = array_filter(scandir($themes_dir), function($item) use ($themes_dir) {
     <div class="themes-grid">
 <?php foreach ($themes as $theme):
     $preview_style = '';
-    if ($theme === 'default-light') {
+    if ($theme === 'default') {
         $preview_style = 'background-color: #f9f9f9; color: #333;';
-    } elseif ($theme === 'default-dark') {
+    } elseif ($theme === 'dark') {
         $preview_style = 'background-color: #333; color: #79c0ff;';
     } elseif ($theme === 'dark-orange') {
         $preview_style = 'background-color: #333; color: #f67f56;';
