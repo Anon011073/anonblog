@@ -30,7 +30,7 @@
     </div>
 
     <!-- Pagination -->
-    <?php if (isset($pagination) && $pagination['total_pages'] > 1): ?>
+    <?php if (isset($pagination) && isset($pagination['total_pages']) && $pagination['total_pages'] > 1): ?>
         <nav class="pagination" aria-label="Pagination" style="margin-top: 2rem; text-align: center;">
             <?php if ($pagination['style'] === 'numbered'): ?>
                 <ul>

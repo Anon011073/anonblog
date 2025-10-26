@@ -1,0 +1,27 @@
+/* Pico.css from CDN */
+@import url("https://cdn.jsdelivr.net/npm/@picocss/pico@2/css/pico.min.css");
+
+/* Custom layout styles to complement Pico */
+.main-content-area {
+    display: flex;
+    gap: 2rem;
+}
+header { margin-top:30px; }
+.content {
+    flex-grow: 1;
+}
+.sidebar {
+    width: 280px;
+    flex-shrink: 0;
+}
+.widget ul {
+    padding-left: 0;
+    list-style: none;
+}
+.widget li {
+    margin-bottom: 0.5rem;
+}
+h1 a {
+    text-decoration: none;
+    color: inherit;
+}
