@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="color-scheme" content="light dark">
     <title><?php echo htmlspecialchars($config['blog_title'] ?? 'My Blog'); ?></title>
-    <link rel="stylesheet" href="themes/default/style.css">
+    <link rel="stylesheet" href="<?php echo get_theme_file_uri('style.css'); ?>">
     <?php do_hook('head_tags'); ?>
 </head>
 <body>

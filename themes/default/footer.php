@@ -1,4 +1,9 @@
             </main>
+            <?php if (is_widget_area_active('sidebar')): ?>
+                <aside class="sidebar">
+                    <?php render_widget_area('sidebar'); ?>
+                </aside>
+            <?php endif; ?>
         </div>
         <footer>
             <p><?php echo $config['footer_text'] ?? '&copy; ' . date('Y') . ' ' . htmlspecialchars($config['blog_title']); ?></p>

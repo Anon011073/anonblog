@@ -1,18 +1,24 @@
 <article class="full-post">
     <header class="post-header">
         <h1><?php echo htmlspecialchars($post['title']); ?></h1>
-        <p class="post-meta">
-            Published on <?php echo date('F j, Y', $post['timestamp']); ?>
-            in <span class="category"><?php echo htmlspecialchars($post['category']); ?></span>
-        </p>
+        <footer>
+            <small>
+                Published on <?php echo date('F j, Y', $post['timestamp']); ?>
+                in <a href="#"><?php echo htmlspecialchars($post['category']); ?></a>
+            </small>
+        </footer>
     </header>
+
+    <?php if (!empty($post['featured_image'])): ?>
+        <img src="<?php echo htmlspecialchars($post['featured_image']); ?>" alt="<?php echo htmlspecialchars($post['title']); ?>" style="width:100%; height:auto; margin-bottom: 1rem;">
+    <?php endif; ?>
 
     <div class="post-content">
         <?php echo $post['content']; // Content is pre-rendered HTML from Markdown ?>
     </div>
 
     <footer class="post-footer">
-        <a href="index.php">&larr; Back to Home</a>
+        <a href="index.php" role="button" class="secondary">&larr; Back to Home</a>
     </footer>
 
     <?php if (function_exists('is_logged_in') && is_logged_in()): ?>

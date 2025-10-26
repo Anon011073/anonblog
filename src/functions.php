@@ -4,6 +4,11 @@
 // Include the Composer autoloader
 require_once ROOT_PATH . '/vendor/autoload.php';
 
+// Include widget and auth functions
+require_once ROOT_PATH . '/src/widgets.php';
+require_once ROOT_PATH . '/admin/auth.php';
+
+
 // Simple hook system
 $hooks = [];
 
@@ -95,6 +100,11 @@ function get_header() {
 
 function get_footer() {
     get_template_part('footer');
+}
+
+function get_theme_file_uri($file) {
+    $theme = get_active_theme();
+    return "/themes/{$theme}/" . ltrim($file, '/');
 }
 
 function get_post($slug) {
