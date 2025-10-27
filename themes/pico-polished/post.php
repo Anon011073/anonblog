@@ -1,5 +1,3 @@
-<?php get_header(); ?>
-
 <article>
     <h2><?php echo htmlspecialchars($post['title']); ?></h2>
     <p><small>Published on <?php echo date('F j, Y', $post['timestamp']); ?></small></p>
@@ -10,5 +8,3 @@
         <?php echo $post['content']; ?>
     </div>
 </article>
-
-<?php get_footer(); ?>

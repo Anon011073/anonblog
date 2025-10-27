@@ -4,13 +4,21 @@
 .featured-image {
     float: left;
     width: 250px;
-    margin-right: 20px;
+    margin-right: 10px;
     margin-bottom: 10px;
 }
 
 article {
     overflow: hidden; /* Clear the float */
     margin-bottom: 2rem;
+}
+
+/* Navigation Menu Styling */
+nav {
+    border: 1px solid var(--pico-muted-border-color);
+    border-radius: var(--pico-border-radius);
+    padding: 10px;
+    margin-bottom: 1rem;
 }
 
 /* Back to Top Button */

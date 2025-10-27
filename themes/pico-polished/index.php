@@ -1,5 +1,3 @@
-<?php get_header(); ?>
-
 <?php foreach ($posts as $post) : ?>
     <article>
         <h2><a href="?post=<?php echo $post['slug']; ?>"><?php echo htmlspecialchars($post['title']); ?></a></h2>
@@ -13,5 +11,3 @@
         </div>
     </article>
 <?php endforeach; ?>
-
-<?php get_footer(); ?>

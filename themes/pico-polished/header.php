@@ -32,5 +32,5 @@
                 ?>
             </div>
         </header>
-        <div class="main-content-area">
-            <main class="content">
+        <div class="grid">
+            <main>

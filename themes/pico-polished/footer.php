@@ -1,4 +1,9 @@
 </main>
+            <?php
+            if (is_widget_area_active('sidebar')) {
+                include 'sidebar.php';
+            }
+            ?>
         </div>
         <footer>
             <small><?php echo htmlspecialchars($config['footer_text'] ?? '© ' . date('Y')); ?></small>
