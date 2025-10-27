@@ -1,1 +1,14 @@
-[]
+[
+    {
+        "label": "Home",
+        "url": "index.php"
+    },
+    {
+        "label": "About",
+        "url": "#"
+    },
+    {
+        "label": "Contact",
+        "url": "#"
+    }
+]

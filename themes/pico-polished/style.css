@@ -1,0 +1,23 @@
+/* Custom Styles for the Pico Polished Theme */
+
+/* Featured Image Styling */
+.featured-image {
+    float: left;
+    width: 250px;
+    margin-right: 20px;
+    margin-bottom: 10px;
+}
+
+article {
+    overflow: hidden; /* Clear the float */
+    margin-bottom: 2rem;
+}
+
+/* Back to Top Button */
+#back-to-top {
+    display: none;
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    z-index: 99;
+}
