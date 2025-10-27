@@ -1,0 +1,12 @@
+{
+    "name": "php-minimalist-blog/php-minimalist-blog",
+    "description": "A minimalist single-user anonymous PHP blog.",
+    "require": {
+        "erusev/parsedown": "^1.7"
+    },
+    "autoload": {
+        "psr-4": {
+            "App\\": "src/"
+        }
+    }
+}
