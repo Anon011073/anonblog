@@ -2,19 +2,30 @@
 // admin/update-post.php
 
 // This script handles the submission from the edit form.
-require_once 'auth.php';
+require_once __DIR__ . '/auth.php';
 require_login();
 
-// Load necessary files
-$config = require_once __DIR__ . '/../config.php';
-
-// Load Composer autoloader
-if (file_exists(__DIR__ . '/../vendor/autoload.php')) {
-    require_once __DIR__ . '/../vendor/autoload.php';
+// Define ROOT_PATH for core functions
+if (!defined('ROOT_PATH')) {
+    define('ROOT_PATH', dirname(__DIR__));
 }
 
-require_once __DIR__ . '/../src/plugins.php';
-require_once __DIR__ . '/../src/functions.php';
+// Load configuration
+$config = require_once ROOT_PATH . '/config.php';
+
+// Load Composer's autoloader
+if (file_exists(ROOT_PATH . '/vendor/autoload.php')) {
+    require_once ROOT_PATH . '/vendor/autoload.php';
+}
+
+// Load plugins and core functions if they exist
+if (file_exists(ROOT_PATH . '/src/plugins.php')) {
+    require_once ROOT_PATH . '/src/plugins.php';
+    load_plugins($config);
+}
+if (file_exists(ROOT_PATH . '/src/functions.php')) {
+    require_once ROOT_PATH . '/src/functions.php';
+}
 
 // --- 1. Verify Request and Get Data ---
 if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
