@@ -29,3 +29,8 @@ nav {
     right: 20px;
     z-index: 99;
 }
+
+/* Sidebar Layout */
+.grid {
+    grid-template-columns: 3fr 1fr; /* 75% 25% */
+}
