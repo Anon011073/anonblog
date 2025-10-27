@@ -53,7 +53,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 }
 
 // --- Display GET request confirmation page ---
-$post = get_post($config, $slug);
+$post = get_post($slug);
 if (!$post) {
     // If post doesn't exist, redirect to dashboard
     header('Location: dashboard.php?error=Post not found.');

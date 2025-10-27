@@ -38,7 +38,7 @@ if (!$slug) {
 }
 
 // Fetch the specific post data using the slug
-$post = get_post($config, $slug);
+$post = get_post($slug);
 if (!$post) {
     header('Location: dashboard.php?error=Post not found.'); // Go to dashboard if post not found
     exit;
