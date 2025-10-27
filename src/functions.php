@@ -9,22 +9,7 @@ require_once ROOT_PATH . '/src/widgets.php';
 require_once ROOT_PATH . '/admin/auth.php';
 
 
-// Simple hook system
-$hooks = [];
-
-function add_hook($hook, $callback) {
-    global $hooks;
-    $hooks[$hook][] = $callback;
-}
-
-function do_hook($hook, ...$args) {
-    global $hooks;
-    if (isset($hooks[$hook])) {
-        foreach ($hooks[$hook] as $callback) {
-            call_user_func_array($callback, $args);
-        }
-    }
-}
+// The hook system is defined in /src/plugins.php
 
 function get_posts() {
     $config = require ROOT_PATH . '/config.php';
