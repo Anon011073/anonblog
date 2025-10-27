@@ -20,8 +20,8 @@ if (file_exists(ROOT_PATH . '/src/plugins.php')) {
     require_once ROOT_PATH . '/src/plugins.php';
     load_plugins($config);
 }
-if (file_exists(ROOT_PATH . '/src/core.php')) {
-    require_once ROOT_PATH . '/src/core.php';
+if (file_exists(ROOT_PATH . '/src/functions.php')) {
+    require_once ROOT_PATH . '/src/functions.php';
 }
 // --- END DEPENDENCY LOADING ---
 
@@ -74,7 +74,6 @@ $css_content = file_get_contents(__DIR__ . '/admin.css');
 <body>
 <div class="admin-wrapper" style="min-height: 0;">
     <main class="admin-content" style="flex-grow: 1; padding: 20px;">
-?>
 
 <div class="page-header">
     <h1>Confirm Deletion</h1>

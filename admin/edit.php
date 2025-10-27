@@ -62,7 +62,6 @@ $css_content = file_get_contents(__DIR__ . '/admin.css');
 <body>
 <div class="admin-wrapper" style="min-height: 0;">
     <main class="admin-content" style="flex-grow: 1; padding: 20px;">
-?>
 
 <div class="page-header">
     <h1>Edit Post</h1>

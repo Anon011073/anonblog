@@ -14,7 +14,7 @@ if (file_exists(__DIR__ . '/../vendor/autoload.php')) {
 }
 
 require_once __DIR__ . '/../src/plugins.php';
-require_once __DIR__ . '/../src/core.php';
+require_once __DIR__ . '/../src/functions.php';
 
 // --- 1. Verify Request and Get Data ---
 if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
