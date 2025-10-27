@@ -24,8 +24,8 @@ if (file_exists(ROOT_PATH . '/src/plugins.php')) {
     require_once ROOT_PATH . '/src/plugins.php';
     load_plugins($config);
 }
-if (file_exists(ROOT_PATH . '/src/core.php')) {
-    require_once ROOT_PATH . '/src/core.php';
+if (file_exists(ROOT_PATH . '/src/functions.php')) {
+    require_once ROOT_PATH . '/src/functions.php';
 }
 // --- END DEPENDENCY LOADING ---
 

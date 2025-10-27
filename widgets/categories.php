@@ -5,9 +5,7 @@ return [
     'name' => 'Categories',
     'description' => 'Displays a list of post categories.',
     'render' => function() {
-        global $config; // The global config is needed for get_all_posts()
-
-        $posts = get_all_posts($config);
+        $posts = get_posts();
         $categories = [];
 
         foreach ($posts as $post) {

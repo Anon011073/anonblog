@@ -103,8 +103,10 @@ function get_footer() {
 }
 
 function get_theme_file_uri($file) {
+    $config = require ROOT_PATH . '/config.php';
+    $base_path = $config['base_path'] ?? '';
     $theme = get_active_theme();
-    return "/themes/{$theme}/" . ltrim($file, '/');
+    return $base_path . "/themes/{$theme}/" . ltrim($file, '/');
 }
 
 function get_post($slug) {

@@ -4,6 +4,7 @@
 return array (
   'blog_title' => 'My Minimalist Blog',
   'blog_description' => 'A quiet place for thoughts.',
+  'base_path' => '/anonblog',
   'active_theme' => 'default',
   'posts_dir' => '/opt/lampp/htdocs/anonblog/posts',
   'admin_password' => 'password',
